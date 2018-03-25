@@ -26,9 +26,9 @@ public class DispatcherImplTest {
 			Integer.parseInt(appBundle.getString("number.director")));
 
 	/**
-	 * create the maximum allowed calls and then assign the calls to each one of the
-	 * queues according to the capacity of parameterized operators, supervisors and
-	 * directors.
+	 * Crear las llamadas máximas permitidas y luego asignar las llamadas a cada una
+	 * de las colas de acuerdo con la capacidad de los operadores, supervisores y
+	 * directores parametrizados en las propiedades number.operator, number.supervisor, number.director.
 	 */
 	@Test
 	public void dispatchCallTest1() {
@@ -44,10 +44,11 @@ public class DispatcherImplTest {
 	}
 
 	/**
-	 * create more allowed calls and then assign calls to each of the queues
-	 * according to the capacity of parameterized operators, supervisors and
-	 * directors, but the call that exceeds the capacity will be assigned to the
-	 * general queue
+	 * crear más llamadas de las permitidas y luego asignar llamadas a cada una de
+	 * las colas de acuerdo con la capacidad de los operadores, supervisores y
+	 * directores parametrizados, pero la llamada que excede la capacidad actual de
+	 * empleados se reasignará a la cola general. De esta forma fue que solucioné el
+	 * plus #1 y #2
 	 */
 	@Test
 	public void dispatchCallTest2() {
@@ -63,7 +64,9 @@ public class DispatcherImplTest {
 	}
 
 	/**
-	 * Each of the employees takes a call
+	 * Plus #3: Se adiciona el test para tomar llamadas y de esta forma validar que
+	 * las llamadas sean tomadas solo por los empleados que pertenecen a la cola de
+	 * trabajo
 	 */
 	@Test
 	public void takeCall1() {
@@ -83,8 +86,9 @@ public class DispatcherImplTest {
 	}	
 	
 	/**
-	 * All employees with the OPERATOR role answer calls and take calls from the
-	 * general queue
+	 * Plus #3: Se adiciona el test en elcual todos los empleados con el rol de
+	 * operador atienden las llamdas pendientes en su cola de trabajo y prosiguen a
+	 * contestar las llamadas que esten pendientes en la cola general de trabajo
 	 */
 	@Test
 	public void takeCall2() {
