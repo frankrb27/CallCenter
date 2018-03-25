@@ -13,7 +13,7 @@ import com.almundo.model.Call;
 import com.almundo.model.Employee;
 
 /**
- * @author frank
+ * @author Frank Rodriguez
  */
 public class DispatcherImpl implements Dispatcher {
 	//Bundle
@@ -33,9 +33,9 @@ public class DispatcherImpl implements Dispatcher {
 
 	/**
 	 * Constructor
-	 * @param numberOperators
-	 * @param numberSupervisors
-	 * @param numberDirectors
+	 * @param int: numberOperators
+	 * @param int: numberSupervisors
+	 * @param int: numberDirectors
 	 */
 	public DispatcherImpl(int numberOperator, int numberSupervisor, int numberDirector) {
 		operatorCallQueue = new LinkedBlockingQueue<Call>(numberOperator);
@@ -45,8 +45,8 @@ public class DispatcherImpl implements Dispatcher {
 	}
 
 	/**
-	 * Dispath call to employee 
-	 * @param call
+	 * Dispath call to queue 
+	 * @param Call call: Call that will be put in a work queue
 	 */
 	public void dispatchCall(Call call) {
 		String METHOD_ = "[dispatchCall]";
@@ -57,7 +57,7 @@ public class DispatcherImpl implements Dispatcher {
 
 	/**
 	 * Assign call to operator queue
-	 * @param call
+	 * @param Call call: Call that will be put in a work queue
 	 */
 	private void assignCallToOperators(Call call) {
 		String METHOD_ = "[assignCallToOperators]";
@@ -77,7 +77,7 @@ public class DispatcherImpl implements Dispatcher {
 
 	/**
 	 * Assign call to supervisor queue
-	 * @param call
+	 * @param Call call: Call that will be put in a work queue
 	 */
 	private void assignCallToSupervisor(Call call) {
 		String METHOD_ = "[assignCallToSupervisor]";
@@ -97,7 +97,7 @@ public class DispatcherImpl implements Dispatcher {
 
 	/**
 	 * Assign call to director queue
-	 * @param call
+	 * @param Call call: Call that will be put in a work queue
 	 */
 	private void assignCallToDirector(Call call) {
 		String METHOD_ = "[assignCallToDirector]";
@@ -117,7 +117,7 @@ public class DispatcherImpl implements Dispatcher {
 
 	/**
 	 * Assign call to director queue
-	 * @param call
+	 * @param Call call: Call that will be put in a work queue
 	 */
 	private void assignCallToGeneral(Call call) {
 		String METHOD_ = "[assignCallToGeneral]";
@@ -130,13 +130,13 @@ public class DispatcherImpl implements Dispatcher {
 
 	/**
 	 * Take call per employee
-	 * @param employee
+	 * @param Employee employee: Employee who will take the call
+	 * @throws InterruptedException
 	 */
 	public void takeCall(Employee employee) throws InterruptedException {
 		String METHOD_ = "[takeCall]";
 		int duration = (int)(Math.random() * ((max - min) + 1)) + min;
 		Call call = null;
-		Date endDate = null;
 		//GET call from respective queue
 		if(employee.getRole().equals(RoleEnum.OPERATOR)) {
 			if(operatorCallQueue.isEmpty()) {
@@ -173,23 +173,12 @@ public class DispatcherImpl implements Dispatcher {
 
 	/**
 	 * Get Call object from specific queue
-	 * @param queue
+	 * @param LinkedBlockingQueue<Call> queue
 	 * @return
 	 */
 	private Call getCallOfQueue(LinkedBlockingQueue<Call> queue) {
 		return queue.poll();
 	}
-
-	/**
-	 * Clear queue
-	 * @return
-	 */
-	public void clear() {
-		operatorCallQueue.clear();
-		supervisorCallQueue.clear();
-		directorCallQueue.clear();
-		generalCallQueue.clear();
-	}	
 
 	/**
 	 * @return the operatorCallQueue

@@ -1,7 +1,7 @@
 package com.almundo.model;
 
 /**
- * @author frank
+ * @author Frank Rodriguez
  */
 public class Customer {
 

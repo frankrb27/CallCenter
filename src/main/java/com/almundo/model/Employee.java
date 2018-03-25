@@ -3,7 +3,7 @@ package com.almundo.model;
 import com.almundo.constant.RoleEnum;
 
 /**
- * @author frank
+ * @author Frank Rodriguez
  */
 public class Employee {
 

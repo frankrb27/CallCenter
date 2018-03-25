@@ -14,7 +14,7 @@ import com.almundo.model.Customer;
 import com.almundo.model.Employee;
 
 /**
- * @author frank
+ * @author Frank Rodriguez
  */
 public class DispatcherImplTest {
 	//Bundle

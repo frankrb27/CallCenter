@@ -6,7 +6,7 @@ import com.almundo.constant.CallStatus;
 import com.almundo.utils.StringUtils;
 
 /**
- * @author frank
+ * @author Frank Rodriguez
  */
 public class Call {
 

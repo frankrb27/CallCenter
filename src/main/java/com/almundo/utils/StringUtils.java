@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author frank
+ * @author Frank Rodriguez
  */
 public class StringUtils {
 

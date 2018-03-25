@@ -1,7 +1,7 @@
 package com.almundo.constant;
 
 /**
- * @author frank
+ * @author Frank Rodriguez
  */
 public enum RoleEnum {
 	

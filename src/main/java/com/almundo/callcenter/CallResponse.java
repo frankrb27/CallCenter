@@ -6,7 +6,7 @@ import com.almundo.dispatcher.impl.DispatcherImpl;
 import com.almundo.model.Employee;
 
 /**
- * @author frank
+ * @author Frank Rodriguez
  */
 public class CallResponse extends CallCenter implements Runnable {
 
@@ -18,7 +18,7 @@ public class CallResponse extends CallCenter implements Runnable {
 
 	/**
 	 * Constructor
-	 * @param call
+	 * @param Employee employee available
 	 */
 	public CallResponse(Employee employee) {
 		this.employee = employee;
@@ -32,7 +32,7 @@ public class CallResponse extends CallCenter implements Runnable {
 	}
 
 	/**
-	 * Execute run
+	 * Take call
 	 */
 	public void run() {
 		String METHOD_ = "[run]";	
