@@ -3,13 +3,14 @@ package com.almundo.callcenter;
 import org.apache.log4j.Logger;
 
 import com.almundo.dispatcher.impl.DispatcherImpl;
-import com.almundo.model.Call;
 import com.almundo.model.Employee;
 
 /**
  * @author frank
  */
 public class CallResponse extends CallCenter implements Runnable {
+
+	//Logger
 	private static final Logger logger = Logger.getLogger(DispatcherImpl.class);
 	private static String CLASS_ = "[CallResponse]";
 	//

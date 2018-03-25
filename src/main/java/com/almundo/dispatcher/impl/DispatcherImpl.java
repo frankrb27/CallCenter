@@ -41,7 +41,7 @@ public class DispatcherImpl implements Dispatcher {
 		operatorCallQueue = new LinkedBlockingQueue<Call>(numberOperator);
 		supervisorCallQueue = new LinkedBlockingQueue<Call>(numberSupervisor);
 		directorCallQueue = new LinkedBlockingQueue<Call>(numberDirector);
-		generalCallQueue = new LinkedBlockingQueue<Call>(numberOperator+numberSupervisor+numberDirector);
+		generalCallQueue = new LinkedBlockingQueue<Call>();
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class DispatcherImpl implements Dispatcher {
 		String METHOD_ = "[assignCallToDirector]";
 		try{
 			//Add Call to queue
-			logger.info(CLASS_+METHOD_+"[Add call to supervisor queue]");
+			logger.info(CLASS_+METHOD_+"[Add call to director queue]");
 			call.setStatus(CallStatus.ON_HOLD);
 			directorCallQueue.add(call);
 			logger.info(CLASS_+METHOD_+"[Finished]");
@@ -121,17 +121,11 @@ public class DispatcherImpl implements Dispatcher {
 	 */
 	private void assignCallToGeneral(Call call) {
 		String METHOD_ = "[assignCallToGeneral]";
-		try{
-			//Add Call to queue
-			logger.info(CLASS_+METHOD_+"[Add call to general queue]");
-			call.setStatus(CallStatus.ON_HOLD);
-			generalCallQueue.add(call);
-			logger.info(CLASS_+METHOD_+"[Finished]");
-		}catch(IllegalStateException ise) {
-			//Full queue, reassing to supervisor
-			logger.info(CLASS_+METHOD_+"[Full general queue, the system doesn't support more calls...  call {"+call.toString()+"} REFUSED]");
-			logger.info(CLASS_+METHOD_+"[Finished]");
-		}
+		//Add Call to queue
+		logger.info(CLASS_+METHOD_+"[Add call to general queue]");
+		call.setStatus(CallStatus.ON_HOLD);
+		generalCallQueue.add(call);
+		logger.info(CLASS_+METHOD_+"[Finished]");
 	}	
 
 	/**
@@ -184,5 +178,44 @@ public class DispatcherImpl implements Dispatcher {
 	 */
 	private Call getCallOfQueue(LinkedBlockingQueue<Call> queue) {
 		return queue.poll();
+	}
+
+	/**
+	 * Clear queue
+	 * @return
+	 */
+	public void clear() {
+		operatorCallQueue.clear();
+		supervisorCallQueue.clear();
+		directorCallQueue.clear();
+		generalCallQueue.clear();
+	}	
+
+	/**
+	 * @return the operatorCallQueue
+	 */
+	public LinkedBlockingQueue<Call> getOperatorCallQueue() {
+		return operatorCallQueue;
+	}
+
+	/**
+	 * @return the supervisorCallQueue
+	 */
+	public LinkedBlockingQueue<Call> getSupervisorCallQueue() {
+		return supervisorCallQueue;
+	}
+
+	/**
+	 * @return the directorCallQueue
+	 */
+	public LinkedBlockingQueue<Call> getDirectorCallQueue() {
+		return directorCallQueue;
+	}
+
+	/**
+	 * @return the generalCallQueue
+	 */
+	public LinkedBlockingQueue<Call> getGeneralCallQueue() {
+		return generalCallQueue;
 	}
 }

@@ -69,12 +69,12 @@ public class InitApp {
 		app.initEmployee();		
 		ExecutorService executor = Executors.newFixedThreadPool(20);
 		//Create Calls
-		for(int i=0; i < 11; i++) {
+		for(int i=0; i < Integer.parseInt(appBundle.getString("number.concurrents.calls")); i++) {
 			Call call = new Call(i+1000, new Customer(i+100, "Customer_"+i), new Date(), CallStatus.INCOMING);
 			executor.execute(new CallRequets(call));
 		}
 		//TimeWait
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		//Threads generate per employee
 		for(Employee employee : app.listEmployee) {
 			executor.execute(new CallResponse(employee));
