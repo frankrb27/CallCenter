@@ -15,10 +15,6 @@
  ```
 - Para ejecutar el programa hay 2 opciones:
 * Mediante un IDE como eclipse y dar clic derecho sobre la clase InitApp que se encuentra en el paquete com.almundo.init 
-* Con el comando java -jar y el fichero .jar
- ```
- java -jar target/CallCenter-0.0.1-SNAPSHOT.jar
- ```
  
  ## ¿Cómo se solucionaron los extras/plus?
  ### Dar alguna solución sobre qué pasa con una llamada cuando no hay ningún empleado libre.
